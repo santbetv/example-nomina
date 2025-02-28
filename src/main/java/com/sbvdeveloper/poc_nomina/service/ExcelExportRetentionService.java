@@ -1,5 +1,6 @@
 package com.sbvdeveloper.poc_nomina.service;
 
+import com.sbvdeveloper.poc_nomina.dto.LineDataDTO;
 import com.sbvdeveloper.poc_nomina.dto.ListDetailWithholdingDTO;
 import com.sbvdeveloper.poc_nomina.dto.PayrollFileDTO;
 import com.sbvdeveloper.poc_nomina.mock.Data;
@@ -344,41 +345,46 @@ public class ExcelExportRetentionService {
                 editDataCellAndRow(sheet, fullPaymentRowIndex, 6, "TOTAL: $");
                 editDataCellAndRow(sheet, fullPaymentRowIndex, 7, payrollFileDTO.getTotal());
 
-                int positionInformation = fullPaymentRowIndex + 4;
-                editDataCellAndRow(sheet, positionInformation, 2, "OBSERVACIONES");
-                editDataCellAndRowBoldAndUnderline(sheet, positionInformation + 2, 1, "Para el descuento y pago de nómina de retenciones es conveniente tener presente lo siguiente:");
-                positionInformation = positionInformation + 2;
-                editDataCellAndRowBoldAndUnderline(sheet, positionInformation + 2, 1, "Adiciones o rebajas");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "Indicar monto por cancelación de \"ABONOS o TOTAL DEUDA\", o eventuales rebajas en columna habilitada y en a fila del beneficiario que corresponda.");
-                positionInformation = positionInformation + 2;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "En caso de efectuar el pago total de un crédito ya sea por finiquito o anticipado, deberá descontar el monto de las columnas:");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "\"Saldo Deuda + Total descuento al beneficiario.\"");
-                positionInformation = positionInformation + 2;
-                editDataCellAndRowBoldAndUnderline(sheet, positionInformation + 2, 1, "Descripciones de las Codificaciones (columna obs.)");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "01.- Dividendo anticipado.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "02.- Valor a descontar incluye abono.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "15.- Descuento adicional al deudor.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "30.- Descuento ambos avales con retención a la empresa.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "31.- Descuento aval uno con retención a la empresa.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "32.- Descuento aval dos con retención a la empresa.");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "35.- Descuentos 50% cuota a cada aval.");
-                positionInformation = positionInformation + 2;
-                editDataCellAndRowBoldAndUnderline(sheet, positionInformation + 2, 1, "Seguro de Desgravamen");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "Los créditos otorgados por la C.C.A.F. de los Andes se encuentran cubiertos por un seguro de desgravamen, contratado con BICE Vida Compañia de");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "Seguros S.A. póliza DEG-0067, cuyo costo es del 0,045% sobre el saldo de capital mensual de la respectiva obligación. Dicho seguro, de cargo del");
-                positionInformation = positionInformation + 1;
-                editDataCellAndRow(sheet, positionInformation + 2, 1, "afiliado, se cobrará mensualmente junto al valor del dividendo y su finalidad es pagar el total del crédito en el evento del fallecimiento del deudor.");
+
+                List<LineDataDTO> lines = List.of(
+                        new LineDataDTO(4, "OBSERVACIONES", false),
+                        new LineDataDTO(2, "Para el descuento y pago de nómina de retenciones es conveniente tener presente lo siguiente:", true),
+                        new LineDataDTO(2, "Adiciones o rebajas", true),
+                        new LineDataDTO(1, "Indicar monto por cancelación de \"ABONOS o TOTAL DEUDA\", o eventuales rebajas en columna habilitada y en la fila del beneficiario que corresponda.", false),
+                        new LineDataDTO(2, "En caso de efectuar el pago total de un crédito ya sea por finiquito o anticipado, deberá descontar el monto de las columnas:", false),
+                        new LineDataDTO(1, "\"Saldo Deuda + Total descuento al beneficiario.\"", false),
+                        new LineDataDTO(2, "Descripciones de las Codificaciones (columna obs.)", true),
+                        new LineDataDTO(1, "01.- Dividendo anticipado.", false),
+                        new LineDataDTO(1, "02.- Valor a descontar incluye abono.", false),
+                        new LineDataDTO(1, "15.- Descuento adicional al deudor.", false),
+                        new LineDataDTO(1, "30.- Descuento ambos avales con retención a la empresa.", false),
+                        new LineDataDTO(1, "31.- Descuento aval uno con retención a la empresa.", false),
+                        new LineDataDTO(1, "32.- Descuento aval dos con retención a la empresa.", false),
+                        new LineDataDTO(1, "35.- Descuentos 50% cuota a cada aval.", false),
+                        new LineDataDTO(2, "Seguro de Desgravamen", true),
+                        new LineDataDTO(1, "Los créditos otorgados por la C.C.A.F. de los Andes se encuentran cubiertos por un seguro de desgravamen, contratado con BICE Vida Compañia de", false),
+                        new LineDataDTO(1, "Seguros S.A. póliza DEG-0067, cuyo costo es del 0,045% sobre el saldo de capital mensual de la respectiva obligación. Dicho seguro, de cargo del", false),
+                        new LineDataDTO(1, "afiliado, se cobrará mensualmente junto al valor del dividendo y su finalidad es pagar el total del crédito en el evento del fallecimiento del deudor.", false)
+                );
+
+                int positionInformation = fullPaymentRowIndex;
+                for (LineDataDTO line : lines) {
+                    // Sumar el offset indicado para esta línea
+                    positionInformation += line.getOffset();
+                    // Si además de sumar, se requiere un desplazamiento fijo adicional (por ejemplo, +2) lo aplicas aquí:
+                    int targetRow = positionInformation + 2;
+
+                    if (line.getText().equals("OBSERVACIONES")) {
+                        editDataCellAndRowBoldAndUnderline(sheet, targetRow, 2, line.getText());
+                    } else {
+                        if (line.isBoldAndUnderlined()) {
+                            editDataCellAndRowBoldAndUnderline(sheet, targetRow, 1, line.getText());
+                        } else {
+                            editDataCellAndRow(sheet, targetRow, 1, line.getText());
+                        }
+                    }
+
+                }
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 workbook.write(outputStream);
