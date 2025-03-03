@@ -12,8 +12,10 @@ public class LoadFilesConfig {
     @Bean
     public Map<String, String> load() {
         var loadPdfRetention = String.format("%s, %s, %s", "nominas_retenciones.jasper", "nominas_retenciones_hoja2.jasper", "nominas_retenciones_hoja3.jasper");
+        var loadPdfAhorro = "nominas_ahorros.jasper";
         Map<String, String> templateMap = new HashMap<>();
         templateMap.put("pdfNomina", loadPdfRetention);
+        templateMap.put("pdfAhorro", loadPdfAhorro);
 
         return templateMap;
     }

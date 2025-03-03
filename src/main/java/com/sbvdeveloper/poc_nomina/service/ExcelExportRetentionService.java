@@ -316,7 +316,7 @@ public class ExcelExportRetentionService {
     public ByteArrayOutputStream generarNominaExcel() {
 
         PayrollFileDTO payrollFileDTO = Data.headPayRollRetentionXmlx();
-        List<ListDetailWithholdingDTO> listDetailWithholdingDTOS = Data.detailHoldingXmlx();
+        List<ListDetailWithholdingDTO> listDetailWithholdingDTOS = Data.detailWithHoldingXmlx();
 
         try {
             InputStream is = ExcelExportRetentionService.class.getResourceAsStream("/retencion_credito_modelo.xlsx");
