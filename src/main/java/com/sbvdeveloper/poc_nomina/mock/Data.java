@@ -3,6 +3,7 @@ package com.sbvdeveloper.poc_nomina.mock;
 import com.sbvdeveloper.poc_nomina.dto.ListDetailSavingsDTO;
 import com.sbvdeveloper.poc_nomina.dto.ListDetailWithholdingDTO;
 import com.sbvdeveloper.poc_nomina.dto.PayrollFileDTO;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 
 import java.util.List;
 
@@ -19,6 +20,33 @@ public class Data {
                 .ultimoDiaPago("10-Enero-2025")
                 .sucursalPago("ARICA")
                 .numeroBoletin("122024.0818268009001-0101")
+                .total("471648")
+                .build();
+    }
+
+    public static PayrollFileDTO headPayRollRetentionPDF() {
+        return PayrollFileDTO.builder()
+                .razonSocial("C.C.A.F. DE LOS ANDES")
+                .rut("81826800-9")
+                .direccion("SAN MARCOS 121")
+                .comuna("Arica")
+                .ciudad("Arica")
+                .periodo("Diciembre de 2024")
+                .ultimoDiaPago("10-Enero-2025")
+                .sucursalPago("ARICA")
+                .numeroBoletin("122024.0818268009001-0101")
+                .totalInformado("464.558")
+                .totalRebajas("464.558")
+                .totalAgregados("464.558")
+                .subTotal("464.558")
+                .reajustes("464.558")
+                .intereses("464.558")
+                .gtosCob("464.558")
+                .efectivo("X")
+                .cheque("X")
+                .numero("12345687")
+                .banco("banco chile")
+                .subTotalHoja("464.558")
                 .total("471648")
                 .build();
     }
@@ -278,6 +306,102 @@ public class Data {
                         .abonosTotalDeuda("----------")
                         .observaciones(" ")
                         .build());
+    }
+
+    public static List<ListDetailWithholdingDTO> detailHoldingPDF() {
+        List<ListDetailWithholdingDTO> tableDataList = List.of(
+                ListDetailWithholdingDTO.builder()
+                        .corr("1")
+                        .rutBeneficiario("9.609.746-8")
+                        .nombreBeneficiario("HERRERA DEL REAL MAURICIO ANDR")
+                        .producto("Seguro Vida")
+                        .codigo("34.0162414-6")
+                        .cuota("127/0")
+                        .valorDescontar("9.505")
+                        .totalDescuentoBeneficiario("9.505")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("2")
+                        .rutBeneficiario("18.171.550-2")
+                        .nombreBeneficiario("MUNOZ CASTILLO RONNIE ANTONIO")
+                        .producto("Seguro Vida")
+                        .codigo("10.0463524-4")
+                        .cuota("134/0")
+                        .valorDescontar("2.295")
+                        .totalDescuentoBeneficiario("2.295")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("3")
+                        .rutBeneficiario("10.301.047-0")
+                        .nombreBeneficiario("MUNOZ GUTIERREZ RODRIGO OSVALD")
+                        .producto("4")
+                        .codigo("208.0223273-0")
+                        .cuota("4/60")
+                        .valorDescontar("331.112")
+                        .totalDescuentoBeneficiario("331.112")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("4")
+                        .rutBeneficiario("15.616.086-5")
+                        .nombreBeneficiario("PENA YANEZ ANGELO ALEXIS")
+                        .producto("Credito Social")
+                        .codigo("36.3312653-3")
+                        .cuota("2/3")
+                        .valorDescontar("15.616")
+                        .totalDescuentoBeneficiario("15.616")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("5")
+                        .rutBeneficiario("16.802.862-8")
+                        .nombreBeneficiario("RIVERA RIVERA BRIAN ALEXANDER")
+                        .producto("Credito Social")
+                        .codigo("34.0233924-0")
+                        .cuota("2/5")
+                        .valorDescontar("50.403")
+                        .totalDescuentoBeneficiario("50.403")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("6")
+                        .rutBeneficiario("13.007.801-K")
+                        .nombreBeneficiario("ROMERO ARRIAGADA ABRAHAM ISAIA")
+                        .producto("Credito Social")
+                        .codigo("01.0226975-6")
+                        .cuota("140/0")
+                        .valorDescontar("7.191")
+                        .totalDescuentoBeneficiario("7.191")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("7")
+                        .rutBeneficiario("10.409.150-4")
+                        .nombreBeneficiario("VALERO ARAYA CAROLINA JEANETTE")
+                        .producto("Seguro Vida")
+                        .codigo("06.0000133-7")
+                        .cuota("183/0")
+                        .valorDescontar("38.492")
+                        .totalDescuentoBeneficiario("38.492")
+                        .linea("------------------------------------------")
+                        .build(),
+                ListDetailWithholdingDTO.builder()
+                        .corr("8")
+                        .rutBeneficiario("8.365.329-9")
+                        .nombreBeneficiario("VIDELA HERRERA LILIANA MARGOT")
+                        .producto("Linea Credito")
+                        .codigo("02.0257687-7")
+                        .cuota("76/0")
+                        .valorDescontar("9.944")
+                        .totalDescuentoBeneficiario("9.944")
+                        .linea("------------------------------------------")
+                        .build()
+
+        );
+        
+        return tableDataList;
     }
 
 }
