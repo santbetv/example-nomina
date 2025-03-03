@@ -24,7 +24,7 @@ public class PayrollController {
     private ExcelExportSavingService excelExportSavingService;
     private PdfExportSavingService pdfExportSavingService;
 
-    @GetMapping("/nomina/xlsx")
+    @GetMapping("/xlsx/nomina")
     public void exportRetention(HttpServletResponse response) throws IOException {
         ByteArrayOutputStream outputStream = excelExportRetentionService.generarNominaExcel();
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -33,7 +33,7 @@ public class PayrollController {
         response.getOutputStream().flush();
     }
 
-    @GetMapping("/ahorro/xlsx")
+    @GetMapping("/xlsx/ahorro")
     public void exportSaving(HttpServletResponse response) throws IOException {
         ByteArrayOutputStream outputStream = excelExportSavingService.generateSavingExcel();
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
